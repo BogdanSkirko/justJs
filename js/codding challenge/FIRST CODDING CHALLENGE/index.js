@@ -82,7 +82,7 @@ const koalasAvg = +koalas.reduce((a, b) => a + b) / koalas.length.toFixed(2);
 console.log(dolphinsAvg, koalasAvg);
 
 if (dolphinsAvg === koalasAvg && dolphinsAvg > 100 && koalasAvg > 100)
-  console.log("Draw!");
+  console.log('Draw!');
 else {
   console.log(
     dolphinsAvg > 100 && dolphinsAvg > koalasAvg
@@ -150,7 +150,7 @@ console.log(
 const dolphinsScore1 = [85, 54, 41];
 const koalasScore1 = [23, 34, 27];
 console.log(dolphinsScore1.length, koalasScore1.length);
-const calcAvarage = (sumAvg) => sumAvg.reduce((a, b) => a + b) / sumAvg.length;
+const calcAvarage = sumAvg => sumAvg.reduce((a, b) => a + b) / sumAvg.length;
 
 const avgDolphins1 = calcAvarage(dolphinsScore1);
 const avgKoalas1 = calcAvarage(koalasScore1);
@@ -161,7 +161,7 @@ const checkWinner = (avgDolphins1, avgKoalas1) =>
       ? `Dolphin"s is winner with${avgDolphins1} points`
       : avgKoalas1 > avgDolphins1 * 2
       ? `Koalas is winner with  ${avgKoalas1} points `
-      : "No winner"
+      : 'No winner'
   );
 
 checkWinner(avgDolphins1, avgKoalas1);
@@ -187,7 +187,7 @@ checkWinner(avgDolphins1, avgKoalas1);
 // array) �
 // GOOD LUCK �
 
-const calcTip = (anyBill) =>
+const calcTip = anyBill =>
   anyBill > 300 || anyBill < 50
     ? anyBill * 1.2 - anyBill
     : anyBill * 1.15 - anyBill;
@@ -223,13 +223,13 @@ console.log(arrayBillsAndTips);
 // tall.
 // GOOD LUCK �
 const markObj = {
-  fullname: "Mark Miller",
+  fullname: 'Mark Miller',
   mass: 78,
   height: 1.69,
   calcBmi: () => markObj.mass / markObj.height ** 2,
 };
 const johnObj = {
-  fullname: "John Smith",
+  fullname: 'John Smith',
   mass: 92,
   height: 1.95,
   calcBmi: () => johnObj.mass / johnObj.height ** 2,
@@ -286,7 +286,7 @@ console.log(arrayBills1);
 console.log(tips1);
 console.log(totals1);
 
-const calcAvarage1 = (arr) => arr.reduce((a, b) => a + b);
+const calcAvarage1 = arr => arr.reduce((a, b) => a + b);
 console.log(calcAvarage1(arrayBills1));
 console.log(+calcAvarage1(tips1).toFixed(2));
 console.log(calcAvarage1(totals1));
@@ -306,8 +306,8 @@ console.log(calcAvarage1(totals1));
 // § Data 2: [12, 5, -5, 0, 4]
 // GOOD LUCK �
 
-const printForecast = (arr) => {
-  let string = "";
+const printForecast = arr => {
+  let string = '';
   for (let i = 0; i < arr.length; i++) {
     string += `${arr[i]} temperature in ${i + 1} days... `;
   }
@@ -352,39 +352,39 @@ printForecast([12, 5, -5, 0, 4]);
 // GOOD LUCK �
 
 const game = {
-  team1: "Bayern Munich",
-  team2: "Borrussia Dortmund",
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
   players: [
     [
-      "Neuer",
-      "Pavard",
-      "Martinez",
-      "Alaba",
-      "Davies",
-      "Kimmich",
-      "Goretzka",
-      "Coman",
-      "Muller",
-      "Gnarby",
-      "Lewandowski",
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
     ],
     [
-      "Burki",
-      "Schulz",
-      "Hummels",
-      "Akanji",
-      "Hakimi",
-      "Weigl",
-      "Witsel",
-      "Hazard",
-      "Brandt",
-      "Sancho",
-      "Gotze",
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
     ],
   ],
-  score: "4:0",
-  scored: ["Lewandowski", "Gnarby", "Lewandowski", "Hummels"],
-  date: "Nov 9th, 2037",
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
   odds: {
     team1: 1.33,
     x: 3.25,
@@ -400,7 +400,7 @@ const fieldPlayers = [
   ...player2.slice(1, player2.length),
 ];
 const allPlayers = game.players.flat();
-const players1Final = [...game.players[0], "Thiago", "Coutinho", "Perisic"];
+const players1Final = [...game.players[0], 'Thiago', 'Coutinho', 'Perisic'];
 console.log(gk, fieldPlayers);
 console.log(players1Final);
 const { team1, x: draw, team2 } = game.odds;
@@ -448,8 +448,64 @@ for (value of oddsLength) avrg += value / oddsLength.length;
 console.log(avrg);
 
 for (const [teamName, bid] of Object.entries(game.odds)) {
-  let teamN = (game[teamName] && game[teamName]) || "draw";
+  let teamN = (game[teamName] && game[teamName]) || 'draw';
   teamN = game[teamName]
     ? console.log(`Odd of victory  ${teamN} : ${bid}`)
     : console.log(`Odd of draw: ${draw}`);
+}
+
+const scorers = {};
+for (const player of game.scored) {
+  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+}
+console.log(scorers);
+
+// Coding Challenge #3
+// Let's continue with our football betting app! This time, we have a map called
+// 'gameEvents' (see below) with a log of the events that happened during the
+// game. The values are the events themselves, and the keys are the minutes in which
+// each event happened (a football game has 90 minutes plus some extra time).
+// Your tasks:
+// 1. Create an array 'events' of the different game events that happened (no
+// duplicates)
+// 2. After the game has finished, is was found that the yellow card from minute 64
+// was unfair. So remove this event from the game events log.
+// 3. Compute and log the following string to the console: "An event happened, on
+// average, every 9 minutes" (keep in mind that a game has 90 minutes)
+// 4. Loop over 'gameEvents' and log each element to the console, marking
+// whether it's in the first half or second half (after 45 min) of the game, like this:
+// [FIRST HALF] 17: ⚽ GOAL
+// GOOD LUCK �
+const gameEvents = new Map([
+  [17, '⚽ GOAL'],
+  [36, '� Substitution'],
+  [47, '⚽ GOAL'],
+  [61, '� Substitution'],
+  [64, '� Yellow card'],
+  [69, '� Red card'],
+  [70, '� Substitution'],
+  [72, '� Substitution'],
+  [76, '⚽ GOAL'],
+  [80, '⚽ GOAL'],
+  [92, '� Yellow card'],
+]);
+
+//1)
+console.log(gameEvents);
+const events = [...new Set(gameEvents.values())];
+console.log(events);
+//2)
+gameEvents.delete(64);
+//3)
+console.log(
+  `An event happened, on average, every ${90 / gameEvents.size} minutes`
+);
+const time = [...gameEvents.keys()].pop();
+console.log(
+  `An event happened, on average, every ${time / gameEvents.size} minutes`
+);
+//4)
+for (const [min, event] of gameEvents) {
+  const half = min <= 45 ? 'FIRST' : 'SECOND';
+  console.log(`[${half} HALF ] ${min}: ${event}`);
 }
