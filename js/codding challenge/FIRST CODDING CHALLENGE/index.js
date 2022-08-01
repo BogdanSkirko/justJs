@@ -406,7 +406,7 @@ console.log(players1Final);
 const { team1, x: draw, team2 } = game.odds;
 console.log(team1, draw, team2);
 
-const printGoals = (players) =>
+const printGoals = players =>
   console.log(`${game.scored.length - 1} were scored from ${players}`);
 printGoals(game.scored);
 
@@ -438,3 +438,18 @@ team1 > team2 && team1 != team2 && console.log(`${game.team2} is winner!`);
 //  Lewandowski: 2
 // }
 // GOOD LUCK
+for (const [i, player] of game.scored.entries()) {
+  console.log(`Goal ${i + 1} : ${player}`);
+}
+
+let avrg = 0;
+const oddsLength = Object.values(game.odds);
+for (value of oddsLength) avrg += value / oddsLength.length;
+console.log(avrg);
+
+for (const [teamName, bid] of Object.entries(game.odds)) {
+  let teamN = (game[teamName] && game[teamName]) || "draw";
+  teamN = game[teamName]
+    ? console.log(`Odd of victory  ${teamN} : ${bid}`)
+    : console.log(`Odd of draw: ${draw}`);
+}
