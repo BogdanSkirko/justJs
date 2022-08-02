@@ -63,17 +63,15 @@ checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
 // § Data 2: [16, 6, 10, 5, 6, 1, 4]
 // GOOD LUCK
 
-const calcAverageHumanAge = dogsAges => {
-  let humanAge = [...dogsAges];
-  let filterAge = humanAge.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
-  console.log(filterAge);
-  let adult = filterAge.filter(age => age >= 18);
-  console.log(adult);
-  let avarege = adult.reduce((acc, age) => acc + age) / adult.length;
-  console.log(avarege);
-};
-calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
-calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+// const calcAverageHumanAge = dogsAges => {
+//   let humanAge = [...dogsAges];
+//   let filterAge = humanAge.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
+//   let adult = filterAge.filter(age => age >= 18);
+//   let avarege = adult.reduce((acc, age) => acc + age) / adult.length;
+//   console.log(avarege);
+// };
+// calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+// calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
 
 // Coding Challenge #3
 // Rewrite the 'calcAverageHumanAge' function from Challenge #2, but this time
@@ -81,3 +79,12 @@ calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
 // Test data:
 // § Data 1: [5, 2, 4, 1, 15, 8, 3]
 // § Data 2: [16, 6, 10, 5, 6, 1, 4
+
+const calcAverageHumanAgeArrow = dogsAges =>
+  dogsAges
+    .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
+    .filter(age => age >= 18)
+    .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+const avg1 = calcAverageHumanAgeArrow([5, 2, 4, 1, 15, 8, 3]);
+const avg2 = calcAverageHumanAgeArrow([16, 6, 10, 5, 6, 1, 4]);
+console.log(avg1, avg2);
