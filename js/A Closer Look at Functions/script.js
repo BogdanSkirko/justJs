@@ -40,11 +40,13 @@ const poll = {
   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
   // This generates [0, 0, 0, 0]. More in the next section!
   answers: new Array(4).fill(0),
+
   registerNewAnswer() {
     const answer = prompt(`${this.question}\n${this.options.join('\n')}`);
     answer >= 0 && answer < 4
       ? poll.answers[answer]++
       : alert('Chose correct variant! from 0 to 3!');
+
     this.displayREsults();
     this.displayREsults('string');
   },
@@ -57,5 +59,33 @@ const poll = {
 const btnAnswer = document
   .querySelector('.poll')
   .addEventListener('click', poll.registerNewAnswer.bind(poll));
-poll.displayREsults.call({ answers: [5, 2, 3] }, 'string');
+poll.displayREsults.call({ answers: [5, 2, 3] }, 'string ');
 poll.displayREsults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
+
+const atv = function (procent) {
+  return function (price) {
+    console.log(price + procent * price);
+  };
+};
+
+const first = atv(0.1);
+first(200);
+
+//Clousers
+// Coding Challenge #2
+// This is more of a thinking challenge than a coding challenge �
+// Your tasks:
+// 1. Take the IIFE below and at the end of the function, attach an event listener that
+// changes the color of the selected h1 element ('header') to blue, each time
+// the body element is clicked. Do not select the h1 element again!
+// 2. And now explain to yourself (or someone around you) why this worked! Take all
+// the time you need. Think about when exactly the callback function is executed,
+// and what that means for the variables involved in this example.
+
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+  document.body.addEventListener('click', function () {
+    header.style.color = 'blue';
+  });
+})();
