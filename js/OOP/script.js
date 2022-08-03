@@ -56,15 +56,15 @@ class CarCl {
     this.make = make;
     this.speed = speed;
   }
-  accelerate = function () {
+  accelerate() {
     this.speed += 10;
     console.log(`${this.make} going at ${this.speed} km/h`);
-  };
-  brake = function () {
+  }
+  brake() {
     this.speed -= 5;
     console.log(`${this.make} going at ${this.speed} km/h`);
     return this;
-  };
+  }
 
   get speedUs() {
     return this.speed / 1.6;
