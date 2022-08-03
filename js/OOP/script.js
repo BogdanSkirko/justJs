@@ -142,7 +142,7 @@ class EVCl extends CarCl {
     return this;
   }
 
-  accelerate() {
+  accelerate1() {
     this.speed += 20;
     this.#charge--;
     console.log(
@@ -156,4 +156,10 @@ class EVCl extends CarCl {
 
 const rivian = new EVCl('Rivian', 120, 23);
 console.log(rivian);
-rivian.accelerate().accelerate().accelerate().brake();
+rivian
+  .accelerate1()
+  .accelerate1()
+  .accelerate1()
+  .brake()
+  .chargeBattery(50)
+  .accelerate1();
