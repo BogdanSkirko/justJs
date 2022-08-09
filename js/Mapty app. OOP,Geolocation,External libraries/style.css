@@ -218,3 +218,21 @@ a:visited {
 .cycling-popup .leaflet-popup-content-wrapper {
   border-left: 5px solid var(--color-brand--1);
 }
+.workout__icons {
+  justify-self: end;
+}
+.workout__settings,
+.workout__delete {
+  width: 2.6rem;
+  justify-self: end;
+  grid-column-end: -1;
+
+  transition: 0.5s;
+}
+.workout__delete {
+  margin-right: 0.5rem;
+}
+
+.workout__delete:hover {
+  opacity: 0.7;
+}

@@ -10,7 +10,6 @@ const inputDistance = document.querySelector('.form__input--distance');
 const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
-
 class Workout {
   date = new Date();
   id = (Date.now() + '').slice(-10);
@@ -57,8 +56,8 @@ class Cycling extends Workout {
   }
 }
 
-const run1 = new Running([39, -12], 5.2, 24, 178);
-const cycling1 = new Cycling([39, -12], 27, 95, 293);
+// const run1 = new Running([39, -12], 5.2, 24, 178);
+// const cycling1 = new Cycling([39, -12], 27, 95, 293);
 
 //APPLICATION ARCHITECTURE
 class App {
@@ -69,7 +68,8 @@ class App {
 
   constructor() {
     //gET USER'S POSITION
-    this._getposition();
+
+    this._getPosition();
     // GET DATE FROM LS
     // Get data from LS
     this._getLocalStorage();
@@ -79,7 +79,7 @@ class App {
     containerWorkouts.addEventListener('click', this._moveToPopup.bind(this));
   }
 
-  _getposition() {
+  _getPosition() {
     if (navigator.geolocation)
       navigator.geolocation.getCurrentPosition(
         this._loadMap.bind(this),
@@ -104,7 +104,7 @@ class App {
 
     this.#map.on('click', this._showForm.bind(this));
     this.#workouts.forEach(work => {
-      this._renderWorkout(work);
+      // this._renderWorkout(work);
       this._renderWorkoutmarker(work);
     });
   }
@@ -202,14 +202,21 @@ class App {
 
   _renderWorkout(workout) {
     let html = `
+   
     <li class="workout workout--${workout.type}" data-id="${workout.id}">
+    <div class="workout__icons">
+      <img src="icons/edit.svg" class="workout__settings">
+      <img src="icons/delete.svg" class="workout__delete">
+    </div>
     <h2 class="workout__title">${workout.description}</h2>
+    
     <div class="workout__details">
       <span class="workout__icon">${
         workout.type === 'running' ? '🏃‍♂️' : '🚴‍♀️'
       }</span>
       <span class="workout__value">${workout.distance}</span>
       <span class="workout__unit">km</span>
+      
     </div>
     <div class="workout__details">
       <span class="workout__icon">⏱</span>
@@ -247,10 +254,10 @@ class App {
       `;
     form.insertAdjacentHTML('afterend', html);
   }
+
   _moveToPopup(e) {
     const workoutEl = e.target.closest('.workout');
     // console.log(workoutEl);
-
     if (!workoutEl) return;
     const workout = this.#workouts.find(
       work => work.id === workoutEl.dataset.id
@@ -263,6 +270,7 @@ class App {
     //using the publig interface
     // workout.click();
   }
+
   _setLocalStorage() {
     localStorage.setItem('workouts', JSON.stringify(this.#workouts));
   }
@@ -276,6 +284,7 @@ class App {
       this._renderWorkout(work);
     });
   }
+
   reset() {
     localStorage.removeItem('workouts');
     location.reload();
