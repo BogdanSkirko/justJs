@@ -27,6 +27,7 @@ const renderSpinner = function (parentEl) {
 };
 const showRecipe = async function () {
   try {
+    cosnt id = window.location.id
     // 1.Loading recipe
     renderSpinner(recipeContainer);
     const res = await fetch(
