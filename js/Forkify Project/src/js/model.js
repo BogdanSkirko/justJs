@@ -2,10 +2,14 @@ import { API_URL } from './config';
 import { getJSON } from './views/helper';
 export const state = {
   recipe: {},
+  search: {
+    query: '',
+    results: [],
+  },
 };
 export const loadRecipe = async function (id) {
   try {
-    const data = await getJSON(`${API_URL}/${id}`);
+    const data = await getJSON(`${API_URL}${id}`);
     const { recipe } = data.data;
     state.recipe = {
       id: recipe.id,
@@ -24,3 +28,24 @@ export const loadRecipe = async function (id) {
     throw err;
   }
 };
+export const loadSearchResult = async function (query) {
+  try {
+    const data = await getJSON(`${API_URL}?search=${query}`);
+    state.search.query = query;
+    console.log(data);
+    state.search.results = data.data.recipes.map(rec => {
+      return {
+        id: rec.id,
+        title: rec.title,
+        publisher: rec.publisher,
+        image: rec.image_url,
+      };
+    });
+    console.log(query);
+    console.log(state.search.results);
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
+
