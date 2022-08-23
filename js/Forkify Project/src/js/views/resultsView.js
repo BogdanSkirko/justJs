@@ -1,6 +1,6 @@
 import View from './View';
 
-import icons from 'url:../../imgs/icons.svg'; //Parsel 2
+import icons from 'url:../../imgs/icons.svg'
 
 class ResultsView extends View {
   _parentElement = document.querySelector('.results');
