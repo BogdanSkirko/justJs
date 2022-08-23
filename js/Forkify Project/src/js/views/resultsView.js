@@ -1,6 +1,6 @@
 import View from './View';
 
-import icons from 'url:../../imgs/icons.svg'
+import icons from 'url:../../imgs/icons.svg';
 
 class ResultsView extends View {
   _parentElement = document.querySelector('.results');
@@ -12,11 +12,15 @@ class ResultsView extends View {
     return this._data.map(this._generateMarkupPrewiev).join('');
   }
   _generateMarkupPrewiev(result) {
+    const id = window.location.hash.slice(1);
+
     return `
     <li class="preview">
-    <a class="preview__link" href="#${result.id}">
+    <a class="preview__link ${
+      result.id === id ? 'preview__link--active' : ''
+    }" href="#${result.id}">
       <figure class="preview__fig">
-        <img src="${result.image}" alt="Test" />
+        <img src="${result.image}" alt="${result.title}" />
       </figure>
       <div class="preview__data">
         <h4 class="preview__title">${result.title}</h4>
