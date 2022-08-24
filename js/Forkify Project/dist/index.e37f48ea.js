@@ -1766,6 +1766,8 @@ const loadRecipe = async function(id) {
             cookingTime: recipe.cooking_time,
             ingredients: recipe.ingredients
         };
+        if (state.bookmarks.some((bookmark)=>bookmark.id === id)) state.recipe.bookmarked = true;
+        else state.recipe.bookmarked = false;
         console.log(state.recipe);
     } catch (err) {
         //Temp error handling
@@ -1809,7 +1811,7 @@ const addBookmark = function(recipe) {
     state.bookmarks.push(recipe);
     console.log(state.bookmarks);
     //Mark current recipe as bookmark
-    if (recipe.id === state.recipe.id) state.recipe.bookmark = true;
+    if (recipe.id === state.recipe.id) state.recipe.bookmarked = true;
 };
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./config":"k5Hzs","./views/helper":"eA19p"}],"k5Hzs":[function(require,module,exports) {
@@ -1925,7 +1927,7 @@ class RecipeView extends (0, _viewJsDefault.default) {
       </div>
     <button class="btn--round btn--bookmark">
       <svg class="">
-        <use href="${0, _iconsSvgDefault.default}#icon-bookmark${this._data.bookmark ? "-fill" : ""}"></use>
+        <use href="${0, _iconsSvgDefault.default}#icon-bookmark${this._data.bookmarked ? "-fill" : ""}"></use>
       </svg>
     </button>
   </div>

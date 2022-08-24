@@ -24,6 +24,10 @@ export const loadRecipe = async function (id) {
       cookingTime: recipe.cooking_time,
       ingredients: recipe.ingredients,
     };
+    if (state.bookmarks.some(bookmark => bookmark.id === id))
+      state.recipe.bookmarked = true;
+    else state.recipe.bookmarked = false;
+
     console.log(state.recipe);
   } catch (err) {
     //Temp error handling
@@ -70,5 +74,5 @@ export const addBookmark = function (recipe) {
   state.bookmarks.push(recipe);
   console.log(state.bookmarks);
   //Mark current recipe as bookmark
-  if (recipe.id === state.recipe.id) state.recipe.bookmark = true;
+  if (recipe.id === state.recipe.id) state.recipe.bookmarked = true;
 };
